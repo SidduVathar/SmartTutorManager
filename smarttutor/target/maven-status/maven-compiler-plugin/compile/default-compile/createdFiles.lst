@@ -1,0 +1,13 @@
+de\hnu\Controller\CourseController.class
+de\hnu\Repository\CourseRepository.class
+de\hnu\AppConfig.class
+de\hnu\Controller\ProfessorController.class
+de\hnu\CorsConfig$1.class
+de\hnu\Model\Professor.class
+de\hnu\Repository\CourseParticipantRepository.class
+de\hnu\Repository\ProfessorRepository.class
+de\hnu\CorsConfig.class
+de\hnu\Model\CourseParticipant.class
+de\hnu\Controller\HomeController.class
+de\hnu\Model\Course.class
+de\hnu\App.class

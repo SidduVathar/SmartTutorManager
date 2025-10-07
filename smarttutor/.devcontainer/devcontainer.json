@@ -1,0 +1,7 @@
+{
+    "name": "smarttutor",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "smarttutor",
+    "workspaceFolder": "/workspace/",
+    "shutdownAction": "stopCompose"
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>smart_tutor</title>
+
+</head>
+    <body>
+        <header id="page-header" style="display: none" >
+            <nav id="navbar">
+                <!-- Logo -->
+                <div id="navbar-logo">
+                    <img src="logo_icon.png" alt="Logo" id="logo-icon">
+                </div>
+    
+                <!-- Navigation Menu -->
+                <ul id="navbar-menu" >
+                    <li><a href="#" id="dashboard-link" class="menu-item" onclick="setActiveMenu('dashboard-link')">Dashboard</a></li>
+                    <li><a href="#" id="courses-link" class="menu-item" onclick="setActiveMenu('courses-link')">Courses</a></li>
+                    <li><a href="#" id="calendar-link" class="menu-item" onclick="setActiveMenu('calendar-link')">Calendar</a></li>
+                    <li><a href="#" id="statistics-link" class="menu-item" onclick="setActiveMenu('statistics-link')">Statistics</a></li>
+                    <li><a href="#" id="chat-ai-link" class="menu-item" onclick="setActiveMenu('chat-ai-link')">ChatAI</a></li>
+                </ul>
+                <!-- Search and Profile -->
+                <div id="navbar-right"  >
+                    <input type="text" placeholder="Search" id="search-bar" aria-label="Search bar">
+                    <div id="logout">
+                        <img src="profile_icon.png" alt="Profile" id="profile-icon" aria-label="Profile">
+                        <a href="#" id="logout-link">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- STARTING PAGE AND LOGIN -->
+        <div id="content">
+            <h1 id="app-title">Smart Tutor</h1>
+            <img src="elearning2.png" alt="Displaypicture">
+            <button onclick= "loginbuttonclicked()" id="login-button">Login</button>
+        </div>
+
+        <script> 
+            document.getElementById('login-button').addEventListener('click', function () {
+              document.getElementById('login-container').style.display = 'flex';
+            });
+        </script>
+        
+        <!-- Login Form with Functional Structure -->
+        <div id="login-container" class="popover" style="display: none">
+            <form id="loginForm">
+                <img id="logo" src="logo_icon.png" alt="Logo">
+                <h2>Sign In with Email</h2>
+    
+                <!-- Email Input -->
+                <input type="email" id="email" name="email" required placeholder="Your Email *">
+    
+                <!-- Password Input -->
+                <input type="password" id="password" name="password" required placeholder="Your Password *">
+               
+                <!-- Buttons -->
+                <button class="SubmitLogin" type="submit">Sign In</button>
+                <button onclick="closeLoginForm()" class="SubmitLogin" type="button" id="cancel">Cancel</button>
+            </form>
+        </div>
+    
+    
+        <main>
+            <div id="courses-section"style="display: none;">
+                <h1>My Courses</h1>
+                <div class="courses">
+                    <!-- Courses will be dynamically inserted here -->
+                </div>
+                <div class="course-card add-course-card">
+                <div class="course-info">
+                    <button id="plusbutton" class="add-course-button">+</button>
+                    <p>Add New Course</p>
+                </div>
+                </div>
+            </div>
+
+            <div id="content-container" class="content-container" style="display: none;">
+                <!-- Course Header -->
+                <h1 id="course-title">Loading...</h1>
+                <p id="course-description1" class="description1">Fetching course description...</p>
+                
+            
+
+               <!-- Content Sections -->
+            
+            <div class="content-sections scrollable">
+                <div class="section-box">
+                    <h2>1, Chapter I - Introduction</h2>
+                    <div class="video">
+                      <p><a href="https://elearning.hnu.de/mod/url/view.php?id=686588" target="_blank">Introduction to Software Engineering</a></p>
+                    </div>
+                    <div class="file">
+                        <p> <a href="https://elearning.hnu.de/mod/resource/view.php?id=686579" target="_blank">Enterprise Application Engineering
+                        </a></p>
+                    </div>
+                </div>
+          
+                <!-- Chapter 2 -->
+                <div class="section-box">
+                    <h2>2. Chapter II- 1. Development Infrastructure</h2>
+                    <div class="video">
+                        <p><a href="https://elearning.hnu.de/mod/url/view.php?id=689234" target="_blank">Introduction to Cloud Computing</a></p>
+                    </div>
+                    <div class="file">
+                      <p> <a href="https://elearning.hnu.de/mod/resource/view.php?id=689237" target="_blank">Cloud Computing</a></p>
+                    </div>
+                </div>
+          
+                <!-- Chapter 3 -->
+                <div class="section-box">
+                    <h2>3. Chapter III - System Design and Specification</h2>
+                    <div class="video">
+                        <p><a href="https://elearning.hnu.de/mod/url/view.php?id=686597" target="_blank">System Design Specification</a></p>
+                    </div>
+                    <div class="file">
+                        <p> <a href="https://elearning.hnu.de/mod/resource/view.php?id=686592" target="_blank">Slides on Architecture,Class, Models</a></p>
+                    </div>
+                </div>
+          
+                <!-- Chapter 4 -->
+                <div class="section-box">
+                    <h2>4. Chapter IV - UX & UI</h2>
+                    <div class="file">
+                      <p> <a href="phttps://elearning.hnu.de/mod/scorm/view.php?id=686640" target="_blank">Gestalt Laws</a></p>
+                    </div>
+                    <div class="file">
+                      <p> <a href="https://elearning.hnu.de/mod/resource/view.php?id=686642" target="_blank">Paper Prototyping</a></p>
+                    </div>
+                    <div class="file">
+                      <p> <a href="https://elearning.hnu.de/mod/resource/view.php?id=686644" target="_blank">Balsamiq wireframes</a></p>
+                    </div>
+                </div>
+
+                <!-- Add Chapter Button -->
+                <div class="add-chapter-box">
+                    <button id="add-chapter-button" class="add-chapter-btn">+</button>
+                    <p>Add New Chapter</p>
+                </div>
+           </div>
+        </div>
+
+            
+           
+        <!-- Course Creation Section -->
+        <div id="create-course-section" style="display: none;">
+            <h1>Create a New Course</h1>
+            <div id="scrollable-form-container"> 
+                <form id="create-course-form">
+                    <!-- Course ID -->
+                    <label for="course-id">Course ID:</label>
+                    <input type="text" id="course-id" name="course-id" required placeholder="Enter course ID">
+
+                    <!-- Course Name -->
+                    <label for="course-name">Course Name:</label>
+                    <input type="text" id="course-name" name="name" required placeholder="Enter course name">
+
+                    <!-- Course Description -->
+                    <label for="course-description">Course Description:</label>
+                    <input type= "text" id="course-description" name="description" required placeholder="Enter course description">
+                    
+                    <!-- ECTS -->
+                    <label for="course-ects">ECTS:</label>
+                    <input type="number" id="course-ects" name="ects" required placeholder="Enter ECTS" min="1" step="1">
+
+                    <!-- Program Name-->
+                    <label for="program-name">Program: </label>
+                    <input type="text" id="program-name" name="program-name" required placeholder="Enter the program name">
+        
+              
+
+                    <!-- Schedule Timing -->
+                    <label for="schedule-date-beginning">Schedule Timing:</label>
+                    <div id="schedule-container">
+                        <label for="schedule-date-beginning">Start Date:</label>
+                        <input type="date" id="schedule-date-beginning" required>
+
+                        <label for="schedule-date-ending">End Date:</label>
+                        <input type="date" id="schedule-date-ending" required>
+
+                        <label for="schedule-frequency">Frequency:</label>
+                        <select id="schedule-frequency" required>
+                            <option value="" disabled selected>Select frequency</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <!-- Form Buttons -->
+                        <button type="submit">Save Course</button>
+                        <button type="button" id="cancel-course-creation">Cancel</button>
+                </form>
+            </div>
+        </div>
+            
+        <div id="edit-course-section" style="display: none;">
+            <h1>Edit Course</h1>
+            <div id="scrollable-edit-form-container">
+            <form id="edit-course-form">
+                <!-- Course ID (Read-Only) -->
+                <label for="edit-course-id">Course ID:</label>
+                <input type="text" id="edit-course-id" name="id"  />
+        
+                <!-- Course Name -->
+                <label for="edit-course-name">Course Name:</label>
+                <input type="text" id="edit-course-name" name="name" required placeholder="Enter course name" />
+        
+                <!-- Course Description -->
+                <label for="edit-course-description">Course Description:</label>
+                <input type="text" id="edit-course-description" name="description" required placeholder="Enter course description" />
+        
+                <!-- ECTS -->
+                <label for="edit-course-ects">ECTS:</label>
+                <input type="number" id="edit-course-ects" name="ects" required placeholder="Enter ECTS" min="1" step="1" />
+        
+                <!-- Program Name -->
+                <label for="edit-program-name">Program Name:</label>
+                <input type="text" id="edit-program-name" name="program-name" required placeholder="Enter program name" />
+        
+                <!-- Schedule Timing -->
+                <label for="edit-schedule-date-beginning">Start Date:</label>
+                <input type="date" id="edit-schedule-date-beginning" required />
+        
+                <label for="edit-schedule-date-ending">End Date:</label>
+                <input type="date" id="edit-schedule-date-ending" required />
+        
+                <label for="edit-schedule-frequency">Frequency:</label>
+                <select id="edit-schedule-frequency" required>
+                    <option value="" disabled selected>Select frequency</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+        
+                <!-- Buttons -->
+                <button type="submit" id="save-changes-button">Save Changes</button>
+                <button type="button" id="cancel-edit-button">Cancel</button>
+            </form>
+        </div>
+    </div>
+        
+        <!-- TBA Section -->
+            <div id="tba-section" style="display:none;">
+                <h1>To Be Announced</h1>
+                <p>Details about the courses will be available soon.</p>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
